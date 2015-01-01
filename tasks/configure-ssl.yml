@@ -1,6 +1,14 @@
 ---
 # Configure secure default virtual host and enable support for SSL connections
 
+- name: check if SSL private key has been decrypted
+  stat: path={{ nginx_default_var_www_ssl_key_path }}/{{ nginx_default_var_www_ssl_key_file }}
+  register: decrypted_ssl_private_key
+
+- name: decrypt SSL private key
+  shell: "openssl rsa -in {{ nginx_default_var_www_ssl_encrypted_key_path }}/{{ nginx_default_var_www_ssl_encrypted_key_file }} -out {{ nginx_default_var_www_ssl_key_path }}/{{ nginx_default_var_www_ssl_key_file }} -passin pass:{{ nginx_default_var_www_ssl_encrypted_key_passphrase }}"
+  when: decrypted_ssl_private_key.stat.exists == false
+
 - name: configure default SSL nginx virtual host
   template: src=etc/nginx/sites-available/default-ssl.j2 dest=/etc/nginx/sites-available/default-ssl.conf
 

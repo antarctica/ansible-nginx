@@ -1,5 +1,9 @@
 # Nginx (`nginx`) - Changelog
 
+## 0.3.0 - January 2015
+
+* Adding SSL private key encryption support
+
 ## 0.2.3 - December 2014
 
 * Preparing role for public release

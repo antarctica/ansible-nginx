@@ -9,7 +9,13 @@ nginx_default_var_www_document_root: /var/www/
 
 # Server settings: SSL
 nginx_default_var_www_ssl_enabled: false
+
 nginx_default_var_www_ssl_cert_path: "/vagrant/data/certificates"
-nginx_default_var_www_ssl_key_path: "{{ nginx_default_var_www_ssl_cert_path }}"
+nginx_default_var_www_ssl_encrypted_key_path: "{{ nginx_default_var_www_ssl_cert_path }}"
+nginx_default_var_www_ssl_key_path: "{{ nginx_default_var_www_ssl_encrypted_key_path }}"
+
 nginx_default_var_www_ssl_cert_file: "cert.cer"
+nginx_default_var_www_ssl_encrypted_key_file: "cert.key.secure"
 nginx_default_var_www_ssl_key_file: "cert.key"
+
+nginx_default_var_www_ssl_encrypted_key_passphrase: ""
