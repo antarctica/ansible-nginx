@@ -45,15 +45,25 @@ Variables used in default virtual host `/etc/nginx/sites-available/default`:
 * `nginx_default_var_www_ssl_cert_path`
     * Path, without a trailing slash, to the directory holding the SSL certificate 
     * Default: "/vagrant/data/certificates"
-* `nginx_default_var_www_ssl_key_path`
-    * Path, without a trailing slash, to the directory holding the SSL private key 
+* `nginx_default_var_www_ssl_encrypted_key_path`
+    * Path, without a trailing slash, to the directory holding the encrypted SSL private key
     * Default: "{{ nginx_default_var_www_ssl_cert_path }}" (i.e. same directory as `nginx_default_var_www_ssl_cert_path`)
+* `nginx_default_var_www_ssl_key_path`
+    * Path, without a trailing slash, to the directory holding the decrypted SSL private key 
+    * Default: "{{ nginx_default_var_www_ssl_encrypted_key_path }}" (i.e. same directory as `nginx_default_var_www_ssl_encrypted_key_path`)
 * `nginx_default_var_www_ssl_cert_file`
     * File name (including extension) of SSL certificate in `nginx_default_var_www_ssl_cert_path`
     * Default: "cert.cer"
+* `nginx_default_var_www_ssl_encrypted_key_file`
+    * File name (including extension) of the encrypted SSL private key in `nginx_default_var_www_ssl_encrypted_key_path`
+    * Default: "cert.key.secure"
 * `nginx_default_var_www_ssl_key_file`
-    * File name (including extension) of SSL private key in `nginx_default_var_www_ssl_key_path`
+    * File name (including extension) of the decrypted SSL private key in `nginx_default_var_www_ssl_key_path`
     * Default: "cert.key"
+* `nginx_default_var_www_ssl_encrypted_key_passphrase`
+    * Pass-phrase for encrypted SSL private key
+    * This variable **MUST NOT** be stored in clear text (i.e. in a playbook). You can use techniques such as vars_prompt to capture values at runtime.
+    * Default: "" (blank)
 
 ## Contributing
 

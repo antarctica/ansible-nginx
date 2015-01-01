@@ -13,7 +13,7 @@ galaxy_info:
 
 armadillo_info:
   name: Nginx
-  version: 0.2.3
+  version: 0.3.0
   source: git@stash.ceh.ac.uk:7999/barc/nginx.git
   dependencies:
   - git@stash.ceh.ac.uk:7999/barc/core.git#v0.5.1
