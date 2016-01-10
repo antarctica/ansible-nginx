@@ -5,6 +5,8 @@ This role adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased][unreleased]
 
+## 2.0.0 - 05/01/2016
+
 This role has been completely rewritten for this version. No backwards compatibility should be assumed.
 
 ### Changed - BREAKING!

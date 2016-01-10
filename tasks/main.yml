@@ -7,6 +7,7 @@
 
 - include: install.yml
   tags:
+    - BARC_INSTALL
     - BARC_INSTALL_PACKAGES
 
 - include: configure.yml

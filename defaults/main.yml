@@ -2,6 +2,8 @@
 # Default variables - inventory or playbook overrides will be respected
 
 # Generic variables - for overriding all roles of a particular type (e.g. operating system, web-servers, etc.)
+BARC_use_non_system_package_sources: true
+
 webserver_listening_port_http: 80
 webserver_listening_port_https: 443
 
