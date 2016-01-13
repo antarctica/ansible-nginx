@@ -19,3 +19,7 @@
   tags:
     - BARC_CONFIGURE
     - BARC_CONFIGURE_FIREWALL
+
+- include: register-role.yml
+  tags:
+    - BARC_ROLE_REGISTRATION
