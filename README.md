@@ -208,8 +208,8 @@ respected individual. If this is for some reason unsuitable, it is possible to o
 Note: As the package policy varies between system and non-system package sources, and between operating systems, the 
 version of installed packages is variable.
 
-Note: In this role, there is no Nginx package available on CentOS without using non-system packages, see the 
-*Limitations* section for more information.
+Note: There is no Nginx package available on CentOS 7 without using non-system packages, see the *Limitations* section 
+for more information.
 
 ### Firewall configuration
 

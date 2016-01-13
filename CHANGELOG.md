@@ -10,6 +10,11 @@ Note: Developers - make sure to set the `BARC_role_version` when releasing new v
 ### Added
 
 * Local facts to record this role has been applied to a system and its version, plus supporting documentation sections
+
+### Changed
+
+* Minor README fixes
+
 ## 2.0.0 - 05/01/2016
 
 This role has been completely rewritten for this version. No backwards compatibility should be assumed.
