@@ -184,6 +184,20 @@ See [BARC-92](https://jira.ceh.ac.uk/browse/BARC-92) for further details.
 
 ## Usage
 
+### BARC roles manifest
+
+By default, BARC roles will record that they have been applied to a system. This is recorded using a set of 
+[Ansible local facts](http://docs.ansible.com/ansible/playbooks_variables.html#local-facts-facts-d), specifically:
+
+* `ansible_local.barc-nginx.general.role_applied` - to indicate that this role has been applied to a system
+* `ansible_local.barc-nginx.general.role_version` - to indicate the version of this this role that has been applied
+
+Note: You **SHOULD** use this feature to determine whether this role has been applied to a system.
+
+If you do not want these facts to be set by this role, you **MUST** skip the **BARC_SET_MANIFEST** tag. No support is 
+offered in this case, as other roles or use-cases may rely on this feature. Therefore you **SHOULD** not disable this
+feature.
+
 ### Non-system packages
 
 It is a convention of BARC roles to use the latest version of packages. Where a suitable non-system package source is 
@@ -194,8 +208,8 @@ respected individual. If this is for some reason unsuitable, it is possible to o
 Note: As the package policy varies between system and non-system package sources, and between operating systems, the 
 version of installed packages is variable.
 
-Note: In this role, there is no Nginx package available on CentOS without using non-system packages, see the 
-*Limitations* section for more information.
+Note: There is no Nginx package available on CentOS 7 without using non-system packages, see the *Limitations* section 
+for more information.
 
 ### Firewall configuration
 
@@ -651,8 +665,23 @@ This role uses the following tags, for various tasks:
 * [**BARC_CONFIGURE_FIREWALL**](https://antarctica.hackpad.com/BARC-Standardised-Tags-AviQxxiBa3y#:h=BARC_CONFIGURE_FIREWALL)
 * [**BARC_INSTALL**](https://antarctica.hackpad.com/BARC-Standardised-Tags-AviQxxiBa3y#:h=BARC_INSTALL)
 * [**BARC_INSTALL_PACKAGES**](https://antarctica.hackpad.com/BARC-Standardised-Tags-AviQxxiBa3y#:h=BARC_INSTALL_PACKAGE)
+* [**BARC_SET_MANIFEST**](https://antarctica.hackpad.com/BARC-Standardised-Tags-AviQxxiBa3y#:h=BARC_SET_MANIFEST)
 
 ### Variables
+
+#### *BARC_role_name*
+
+* **MUST NOT** be specified
+* Specifies the name of this role within the BAS Ansible Roles Collection (BARC) used for setting local facts
+* See the *BARC roles manifest* section for more information
+* Example: nginx
+
+#### *BARC_role_version*
+
+* **MUST NOT** be specified
+* Specifies the name of this role within the BAS Ansible Roles Collection (BARC) used for setting local facts
+* See the *BARC roles manifest* section for more information
+* Example: 2.0.0
 
 #### *BARC_use_non_system_package_sources*
 
@@ -1050,6 +1079,11 @@ workflow is used to manage the development of this project:
 required and merge into master with a tagged, semantic version (e.g. v1.2.3)
 * After each release, the master branch should be merged with develop to restart the process
 * High impact bugs can be addressed in hotfix branches, created from and merged into master (then develop) directly
+
+### Release procedure
+
+See [here](https://antarctica.hackpad.com/BARC-Overview-and-Policies-SzcHzHvitkt#:h=Release-procedures) for general 
+release procedures for BARC roles.
 
 ## License
 
